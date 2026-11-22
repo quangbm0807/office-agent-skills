@@ -1,0 +1,21 @@
+{
+  "name": "office-agent-skills",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Agent Skills for building PowerPoint decks and Word reports in code (pptxgenjs, docx), usable by Antigravity, Claude Code, Gemini CLI, Codex and other agents.",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "check": "node skills/pptx-deck-builder/scripts/check_deps.js && node skills/docx-report-builder/scripts/check_deps.js",
+    "test": "node skills/pptx-deck-builder/templates/example_deck.js out/example_deck.pptx && node skills/pptx-deck-builder/scripts/render.js out/example_deck.pptx out/deck_render && node skills/docx-report-builder/templates/example_report.js out/example_report.docx && node skills/docx-report-builder/scripts/render.js out/example_report.docx out/report_render",
+    "sync": "node -e \"const fs=require('fs');for(const f of ['_deps.js','render.js','extract_docx.js'])fs.copyFileSync('skills/pptx-deck-builder/scripts/'+f,'skills/docx-report-builder/scripts/'+f);console.log('synced shared scripts')\""
+  },
+  "dependencies": {
+    "docx": "^9.5.0",
+    "pptxgenjs": "^4.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "sharp": "^0.34.0"
+  }
+}
